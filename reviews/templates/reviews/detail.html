@@ -1,13 +1,25 @@
-{% extends 'base.html' %}
-
-{% block title %}
+{% extends 'base.html' %} {% block title %}
 <title>영화 리뷰 커뮤니티</title>
-{% endblock %}
-
-{% block content %}
-<h1>제목: {{ title }}</h1>
-<p>{{ content }}</p>
-
-<a href="">수정</a>
-<a href="">삭제</a>
+{% endblock %} {% block content %}
+<div class="container my-5">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>{{ post.title }}</h1>
+    <div class="mx-5">
+      <a class="btn btn-outline-primary" href="{% url 'reviews:edit' post.pk %}"
+        >수정</a
+      >
+      <a
+        class="btn btn-outline-danger ms-2"
+        href="{% url 'reviews:delete' post.pk %}"
+        >삭제</a
+      >
+    </div>
+  </div>
+  <hr />
+  <p style="min-height: 300px">{{ post.content }}</p>
+  <hr />
+  <a class="btn btn-outline-primary" href="{% url 'reviews:index' %}"
+    >목록으로</a
+  >
+</div>
 {% endblock %}
