@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>영화 리뷰 커뮤니티</title>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">리뷰 번호</th>
+      <th scope="col">리뷰 제목</th>
+      <th scope="col">작성 시간</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>늑대사냥 보고 왔어요</td>
+      <td>2020년 9월 29일</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>늑대사냥 봄</td>
+      <td>2020년 9월 29일</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>여자친구랑 늑대사냥 보고 왔어요</td>
+      <td>2020년 9월 29일</td>
+    </tr>
+  </tbody>
+</table>
+
+<a href="{% url 'reviews:new' %}" class="btn btn-primary">리뷰 작성</a>
+
+{% endblock %}
