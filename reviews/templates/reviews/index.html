@@ -1,6 +1,10 @@
-{% extends 'base.html' %} {% block title %}
+{% extends 'base.html' %}
+
+{% block title %}
 <title>영화 리뷰 커뮤니티</title>
-{% endblock %} {% block content %}
+{% endblock %}
+
+{% block content %}
 <div class="container my-5">
   <h1 class="text-center mb-5">영화 리뷰 커뮤니티</h1>
   <table class="table table-hover">
@@ -14,11 +18,8 @@
     </thead>
     <tbody>
       {% for post in posts %}
-      <a
-        href="{% url 'reviews:detail' post.pk %}"
-        style="text-decoration: none; width: 100%; display: table"
-      >
-        <tr>
+      <a href="{% url 'reviews:detail' post.pk %}" style="text-decoration: none; width: 100%; display: table">
+        <tr onclick="goToDetail('{{ post.pk }}')">
           <th scope="row">{{ post.pk }}</th>
           <td>{{ post.title }}</td>
           <td>{{ post.created_at|date:'Y년 m월 d일 H:i' }}</td>
@@ -28,9 +29,17 @@
       {% endfor %}
     </tbody>
   </table>
+
   <div class="d-flex justify-content-end">
     <a href="{% url 'reviews:new' %}" class="btn btn-primary">리뷰 작성</a>
   </div>
 </div>
 
+<!-- JS -->
+<script>
+  function goToDetail(post_pk) {
+    const url = "{% url 'reviews:detail' post_pk %}";
+    location.href = url;
+  }
+</script>
 {% endblock %}
